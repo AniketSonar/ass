@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 11</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Project:write a python program to predict the speed of a 5 year old car</h1>
+        <a href="index.html">Back to Homepage</a>
+    </header>
+    <main>
+        <section>
+            <h2>Code:</h2>
+            <pre>
+<code>
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+# Generate synthetic data
+np.random.seed(42)
+n_samples = 1000
+
+# Features: Age of the car in years, Mileage in thousands of miles
+# Speed: Speed of the car in mph
+data = {
+    'Age': np.random.randint(1, 15, n_samples),
+    'Mileage': np.random.randint(5, 150, n_samples),
+    'Speed': np.random.randint(30, 120, n_samples)  # Target variable
+}
+
+df = pd.DataFrame(data)
+
+# Split the data into training and testing sets
+X = df[['Age', 'Mileage']]
+y = df['Speed']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create and train the model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Predict on the test set and evaluate
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f"Mean Squared Error: {mse}")
+
+# Predict the speed of a 5-year-old car with some mileage
+age_of_car = 5
+mileage_of_car = 50  # Example mileage in thousands of miles
+
+speed_prediction = model.predict([[age_of_car, mileage_of_car]])
+print(f"Predicted speed of a {age_of_car}-year-old car with {mileage_of_car}k miles: {speed_prediction[0]:.2f} mph")
+                 
+</code>
+            </pre>
+        </section>
+        <section>
+            
+        </section>
+    </main>
+    
+</body>
+</html>

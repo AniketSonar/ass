@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 11</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Project:write a python program to print the coefficient values of the regression object in</h1>
+        <a href="index.html">Back to Homepage</a>
+    </header>
+    <main>
+        <section>
+            <h2>Code:</h2>
+            <pre>
+<code>
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Sample data
+X = np.array([[1], [2], [3], [4], [5]])  # Features
+y = np.array([2, 3, 5, 7, 11])           # Target variable
+
+# Create and fit the model
+model = LinearRegression()
+model.fit(X, y)
+
+# Print the coefficients
+print("Coefficients:", model.coef_)
+print("Intercept:", model.intercept_)
+            
+</code>
+            </pre>
+        </section>
+        <section>
+            
+        </section>
+    </main>
+    
+</body>
+</html>

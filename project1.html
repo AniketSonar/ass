@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Project: Write a Python program to find mean,mode,median</h1>
+        <a href="index.html">Back to Homepage</a>
+    </header>
+    <main>
+        <section>
+            <h2>Code:</h2>
+            <pre>
+<code>
+from scipy import stats
+import numpy
+speed = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+x = numpy.mean(speed)
+print(x)
+x = numpy.median(speed)
+print(x)
+x = stats.mode(speed)
+print(x)
+
+
+
+Use the NumPy mean() method to find the average speed:
+
+import numpy
+speed = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+x = numpy.mean(speed)
+print(x)
+
+Result:-
+89.76923076923077
+
+Use the NumPy median() method to find the middle value:
+
+import numpy
+speed = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+x = numpy.median(speed)
+print(x)
+Result:-
+87.0
+
+Use the SciPy mode() method to find the number that appears the most:
+from scipy import stats
+speed = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+x = stats.mode(speed)
+print(x)
+Result: ModeResult(mode=array([86]), count=array([3]))
+
+
+</code>
+            </pre>
+        </section>
+        <section>
+            
+        </section>
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 11</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Project:write a python program to random multi label classification data is created by the function make make_multilabel_classification()</h1>
+        <a href="index.html">Back to Homepage</a>
+    </header>
+    <main>
+        <section>
+            <h2>Code:</h2>
+            <pre>
+<code>
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_multilabel_classification
+from sklearn.decomposition import PCA
+
+# Generate synthetic multi-label data
+n_samples = 200
+n_features = 20
+n_classes = 5
+n_labels = 3  # Number of labels per instance
+random_state = 42
+
+# Create the multi-label dataset
+X, y = make_multilabel_classification(n_samples=n_samples, n_classes=n_classes, n_labels=n_labels, random_state=random_state)
+
+# Display the shape of the data
+print("Feature matrix shape:", X.shape)
+print("Label matrix shape:", y.shape)
+
+# Optionally reduce the dimensionality of the feature matrix for visualization
+pca = PCA(n_components=2)
+X_reduced = pca.fit_transform(X)
+
+# Plot the multi-label data
+plt.figure(figsize=(10, 7))
+scatter = plt.scatter(X_reduced[:, 0], X_reduced[:, 1], c=y.sum(axis=1), cmap='viridis', marker='o', edgecolor='k')
+plt.title('Multi-Label Classification Data (Dimensionality Reduced)')
+plt.xlabel('Principal Component 1')
+plt.ylabel('Principal Component 2')
+plt.colorbar(scatter, label='Number of Labels per Sample')
+plt.show()
+    
+</code>
+            </pre>
+        </section>
+        <section>
+            
+        </section>
+    </main>
+    
+</body>
+</html>

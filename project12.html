@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 11</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Project:write a python program to creating a dataframe to implement one hot encoding from csv file.</h1>
+        <a href="index.html">Back to Homepage</a>
+    </header>
+    <main>
+        <section>
+            <h2>Code:</h2>
+            <pre>
+<code>
+import csv
+# Define the header and rows
+header = ['Name', 'Color', 'Size']
+rows = [
+    ['Alice', 'Red', 'Small'],
+    ['Bob', 'Blue', 'Medium'],
+    ['Charlie', 'Red', 'Large'],
+    ['David', 'Green', 'Medium'],
+    ['Eva', 'Blue', 'Small']
+]
+
+# Specify the file name
+filename = 'data.csv'
+
+# Write to the CSV file
+with open(filename, 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(header)  # Write the header
+    writer.writerows(rows)   # Write the rows
+
+print(f"CSV file '{filename}' created successfully.")
+
+
+
+
+
+import pandas as pd
+
+# Load the CSV file into a DataFrame
+df = pd.read_csv('data.csv')
+
+# Display the original DataFrame
+print("Original DataFrame:")
+print(df)
+
+# Perform one-hot encoding on categorical columns
+df_encoded = pd.get_dummies(df, columns=['Color', 'Size'])
+
+# Display the DataFrame with one-hot encoding
+print("\nDataFrame with One-Hot Encoding:")
+print(df_encoded)
+
+# Optionally, save the encoded DataFrame to a new CSV file
+df_encoded.to_csv('data_encoded.csv', index=False)
+    
+</code>
+            </pre>
+        </section>
+        <section>
+            
+        </section>
+    </main>
+    
+</body>
+</html>

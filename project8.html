@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 11</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Project:write a python program to display the plot we can use the function plot() and show() from pyplot</h1>
+        <a href="index.html">Back to Homepage</a>
+    </header>
+    <main>
+        <section>
+            <h2>Code:</h2>
+            <pre>
+<code>
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_circles
+from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+
+# Generate a 2D binary classification dataset with a circular decision boundary
+X, y = make_circles(n_samples=100, factor=0.3, noise=0.1, random_state=0)
+
+# Scale the features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Create a Support Vector Classifier with an RBF kernel
+clf = SVC(kernel='rbf', gamma=1.0, C=1.0)
+clf.fit(X_scaled, y)
+
+# Create a mesh grid for plotting the decision boundary
+x_min, x_max = X_scaled[:, 0].min() - 0.1, X_scaled[:, 0].max() + 0.1
+y_min, y_max = X_scaled[:, 1].min() - 0.1, X_scaled[:, 1].max() + 0.1
+xx, yy = np.meshgrid(np.linspace(x_min, x_max, 500),
+                        np.linspace(y_min, y_max, 500))
+Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+Z = Z.reshape(xx.shape)
+
+# Plotting the decision boundary
+plt.figure(figsize=(8, 6))
+
+# Plot decision boundary and margins
+plt.contour(xx, yy, Z, colors='k', levels=[0.5], alpha=0.5, linewidths=2)
+
+# Plot the data points
+plt.plot(X_scaled[y == 0, 0], X_scaled[y == 0, 1], 'ro', label='Class 0')
+plt.plot(X_scaled[y == 1, 0], X_scaled[y == 1, 1], 'bo', label='Class 1')
+
+# Add labels and legend
+plt.title('2D Binary Classification with Circular Decision Boundary')
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.legend()
+
+# Show plot
+plt.show()
+           
+</code>
+            </pre>
+        </section>
+        <section>
+            
+        </section>
+    </main>
+    
+</body>
+</html>
